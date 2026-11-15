@@ -1,0 +1,173 @@
+<svg width="412" height="917" viewBox="0 0 412 917" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad2" x1="206" y1="0" x2="206" y2="917" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0E1422"/>
+      <stop offset="100%" stop-color="#090D16"/>
+    </linearGradient>
+    <linearGradient id="ctaGrad2" x1="0" y1="0" x2="232" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Device Frame 412x917 -->
+  <rect id="App Background" width="412" height="917" rx="36" fill="url(#bgGrad2)" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Status Bar -->
+  <g id="Status Bar" transform="translate(28, 16)">
+    <text x="0" y="16" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="13" font-weight="600">09:41</text>
+    <rect id="Dynamic Island" x="154" y="4" width="48" height="14" rx="7" fill="#05080F"/>
+    <text x="356" y="16" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11" font-weight="600" text-anchor="end">5G · 94%</text>
+  </g>
+
+  <!-- Header with Skip -->
+  <g id="Header" transform="translate(24, 56)">
+    <text x="0" y="24" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="24" font-weight="700">How was it?</text>
+    <rect x="148" y="6" width="76" height="22" rx="11" fill="#172033"/>
+    <text x="186" y="21" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Optional</text>
+    <text x="364" y="22" fill="#818CF8" font-family="Inter, sans-serif" font-size="13" font-weight="600" text-anchor="end">Skip for now</text>
+    <text x="0" y="46" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">Tap any chip that applies · Leave the rest alone</text>
+  </g>
+
+  <!-- Auto-Filled Banner -->
+  <g id="Auto-Filled Pill Strip" transform="translate(24, 116)">
+    <rect width="364" height="58" rx="16" fill="#131B2E" stroke="#24324F"/>
+    <path d="M16 18.5L19.5 22L26 15.5" stroke="#A5B4FC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="32" y="23" fill="#A5B4FC" font-family="Inter, sans-serif" font-size="11" font-weight="700">FILLED IN FOR YOU AUTOMATICALLY</text>
+    <circle cx="21" cy="39" r="3.5" fill="#A78BFA"/>
+    <text x="30" y="43" fill="#E2E8F0" font-family="Inter, sans-serif" font-size="12">Sleep: 5h 40m (Watch)</text>
+    <circle cx="192" cy="39" r="3.5" fill="#38BDF8"/>
+    <text x="201" y="43" fill="#E2E8F0" font-family="Inter, sans-serif" font-size="12">Weather: 1006 hPa drop</text>
+  </g>
+
+  <!-- Category 1: Routine change -->
+  <g id="Group - Routine change" transform="translate(24, 192)">
+    <text x="0" y="14" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12.5" font-weight="600">Routine change</text>
+    <g id="Chip - Trip (Selected)" transform="translate(0, 22)">
+      <rect width="108" height="38" rx="19" fill="#252F59" stroke="#818CF8" stroke-width="1.5"/>
+      <text x="54" y="24" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="13" font-weight="600" text-anchor="middle">✓ Trip</text>
+    </g>
+    <g id="Chip - Late night" transform="translate(118, 22)">
+      <rect width="124" height="38" rx="19" fill="#131B2E" stroke="#293756"/>
+      <text x="62" y="24" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Late night</text>
+    </g>
+  </g>
+
+  <!-- Category 2: Emotional state -->
+  <g id="Group - Emotional state" transform="translate(24, 268)">
+    <text x="0" y="14" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12.5" font-weight="600">Emotional state</text>
+    <g id="Chip - Calm" transform="translate(0, 22)">
+      <rect width="98" height="38" rx="19" fill="#131B2E" stroke="#293756"/>
+      <text x="49" y="24" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Calm</text>
+    </g>
+    <g id="Chip - Stressed (Selected)" transform="translate(108, 22)">
+      <rect width="128" height="38" rx="19" fill="#252F59" stroke="#818CF8" stroke-width="1.5"/>
+      <text x="64" y="24" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="13" font-weight="600" text-anchor="middle">✓ Stressed</text>
+    </g>
+  </g>
+
+  <!-- Category 3: Exposure -->
+  <g id="Group - Exposure" transform="translate(24, 344)">
+    <text x="0" y="14" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12.5" font-weight="600">Exposure</text>
+    <g id="Chip - Sun exposure (Selected)" transform="translate(0, 22)">
+      <rect width="148" height="38" rx="19" fill="#252F59" stroke="#818CF8" stroke-width="1.5"/>
+      <text x="74" y="24" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="13" font-weight="600" text-anchor="middle">✓ Sun exposure</text>
+    </g>
+    <g id="Chip - Coffee" transform="translate(158, 22)">
+      <rect width="102" height="38" rx="19" fill="#131B2E" stroke="#293756"/>
+      <text x="51" y="24" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Coffee</text>
+    </g>
+  </g>
+
+  <!-- Category 4: Health -->
+  <g id="Group - Health" transform="translate(24, 420)">
+    <text x="0" y="14" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12.5" font-weight="600">Health</text>
+    <g id="Chip - Medication taken (Selected)" transform="translate(0, 22)">
+      <rect width="166" height="38" rx="19" fill="#252F59" stroke="#818CF8" stroke-width="1.5"/>
+      <text x="83" y="24" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="13" font-weight="600" text-anchor="middle">✓ Medication taken</text>
+    </g>
+    <g id="Chip - Menstruation (optional)" transform="translate(176, 22)">
+      <rect width="188" height="38" rx="19" fill="#131B2E" stroke="#293756"/>
+      <text x="94" y="24" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12.5" font-weight="500" text-anchor="middle">Menstruation (optional)</text>
+    </g>
+  </g>
+
+  <!-- Category 5: Food -->
+  <g id="Group - Food" transform="translate(24, 496)">
+    <text x="0" y="14" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12.5" font-weight="600">Food</text>
+    <g id="Chip - Skipped meal" transform="translate(0, 22)">
+      <rect width="136" height="38" rx="19" fill="#131B2E" stroke="#293756"/>
+      <text x="68" y="24" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Skipped meal</text>
+    </g>
+    <g id="Chip - Alcohol" transform="translate(146, 22)">
+      <rect width="102" height="38" rx="19" fill="#131B2E" stroke="#293756"/>
+      <text x="51" y="24" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Alcohol</text>
+    </g>
+  </g>
+
+  <!-- Category 6: What helped -->
+  <g id="Group - What helped" transform="translate(24, 572)">
+    <text x="0" y="14" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12.5" font-weight="600">What helped</text>
+    <g id="Chip - Dark room (Selected)" transform="translate(0, 22)">
+      <rect width="128" height="38" rx="19" fill="#163230" stroke="#34D399" stroke-width="1.5"/>
+      <text x="64" y="24" fill="#A7F3D0" font-family="Inter, sans-serif" font-size="13" font-weight="600" text-anchor="middle">✓ Dark room</text>
+    </g>
+    <g id="Chip - Rest" transform="translate(138, 22)">
+      <rect width="88" height="38" rx="19" fill="#131B2E" stroke="#293756"/>
+      <text x="44" y="24" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Rest</text>
+    </g>
+    <g id="Chip - Sleep" transform="translate(236, 22)">
+      <rect width="92" height="38" rx="19" fill="#131B2E" stroke="#293756"/>
+      <text x="46" y="24" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13" font-weight="500" text-anchor="middle">Sleep</text>
+    </g>
+  </g>
+
+  <!-- Add Something Else Button (Fixed Spacing + Vector Icon) -->
+  <g id="Button - Add something else" transform="translate(24, 656)">
+    <rect width="364" height="52" rx="16" fill="#131B2E" stroke="#2D3D5E" stroke-width="1.2"/>
+    <rect x="14" y="12" width="28" height="28" rx="8" fill="#1E2946"/>
+    <path d="M28 21V31M23 26H33" stroke="#A5B4FC" stroke-width="1.6" stroke-linecap="round"/>
+    <text x="52" y="31" fill="#E2E8F0" font-family="Inter, sans-serif" font-size="13" font-weight="600">Add something else (in your own words)</text>
+    <path d="M336 26H346M346 26L342 22M346 26L342 30" stroke="#818CF8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Sticky Action Row -->
+  <g id="Footer Actions" transform="translate(24, 728)">
+    <rect x="0" y="0" width="232" height="56" rx="16" fill="url(#ctaGrad2)"/>
+    <text x="116" y="34" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="15.5" font-weight="700" text-anchor="middle">Save check-in</text>
+
+    <rect x="244" y="0" width="120" height="56" rx="16" fill="#131B2E" stroke="#293756"/>
+    <text x="304" y="34" fill="#94A3B8" font-family="Inter, sans-serif" font-size="14" font-weight="600" text-anchor="middle">Skip</text>
+  </g>
+
+  <!-- Bottom Navigation Bar -->
+  <g id="Bottom Navigation" transform="translate(0, 825)">
+    <rect width="412" height="92" fill="#0B0F1A"/>
+    <line x1="0" y1="0" x2="412" y2="0" stroke="#1E293B" stroke-width="1"/>
+
+    <g id="Tab 1 - Today" transform="translate(24, 14)">
+      <circle cx="44" cy="14" r="5" fill="#64748B"/>
+      <text x="44" y="44" fill="#64748B" font-family="Inter, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Today</text>
+    </g>
+
+    <g id="Tab 2 - Check-in (Active)" transform="translate(116, 14)">
+      <rect x="14" y="0" width="60" height="28" rx="14" fill="#1E2946"/>
+      <path d="M44 8V20M38 14H50" stroke="#818CF8" stroke-width="2" stroke-linecap="round"/>
+      <text x="44" y="44" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Check-in</text>
+    </g>
+
+    <g id="Tab 3 - History" transform="translate(208, 14)">
+      <rect x="37" y="8" width="14" height="12" rx="2" stroke="#64748B" stroke-width="1.5"/>
+      <line x1="40" y1="12" x2="48" y2="12" stroke="#64748B" stroke-width="1.3"/>
+      <line x1="40" y1="16" x2="46" y2="16" stroke="#64748B" stroke-width="1.3"/>
+      <text x="44" y="44" fill="#64748B" font-family="Inter, sans-serif" font-size="11" font-weight="500" text-anchor="middle">History</text>
+    </g>
+
+    <g id="Tab 4 - Doctor AI" transform="translate(300, 14)">
+      <path d="M44 7L45.8 12.2L51 14L45.8 15.8L44 21L42.2 15.8L37 14L42.2 12.2L44 7Z" fill="#64748B"/>
+      <text x="44" y="44" fill="#64748B" font-family="Inter, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Doctor AI</text>
+    </g>
+
+    <rect id="Home Indicator" x="138" y="78" width="136" height="5" rx="2.5" fill="#334155"/>
+  </g>
+</svg>

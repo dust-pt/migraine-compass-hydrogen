@@ -1,0 +1,134 @@
+<svg width="412" height="917" viewBox="0 0 412 917" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad1" x1="206" y1="0" x2="206" y2="917" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0E1422"/>
+      <stop offset="100%" stop-color="#090D16"/>
+    </linearGradient>
+    <linearGradient id="ctaGrad1" x1="0" y1="0" x2="364" y2="62" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Device Frame 412x917 -->
+  <rect id="App Background" width="412" height="917" rx="36" fill="url(#bgGrad1)" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Modern Mobile Status Bar -->
+  <g id="Status Bar" transform="translate(28, 16)">
+    <text x="0" y="16" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="13" font-weight="600">09:41</text>
+    <rect id="Dynamic Island" x="154" y="4" width="48" height="14" rx="7" fill="#05080F"/>
+    <text x="356" y="16" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11" font-weight="600" text-anchor="end">5G · 94%</text>
+  </g>
+
+  <!-- App Header -->
+  <g id="Header" transform="translate(24, 62)">
+    <g id="Badge - Calm Mode">
+      <rect x="0" y="0" width="172" height="26" rx="13" fill="#172033" stroke="#263554"/>
+      <circle cx="15" cy="13" r="4" fill="#34D399"/>
+      <text x="27" y="17" fill="#94A3B8" font-family="Inter, sans-serif" font-size="11" font-weight="600">Calm mode · No streaks</text>
+    </g>
+
+    <text x="0" y="58" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="28" font-weight="700">Migraine Compass</text>
+    <text x="0" y="82" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13.5">Log only after an attack, when you feel ready.</text>
+  </g>
+
+  <!-- Hero Card: Recent Attacks & Pattern Link -->
+  <g id="Card - Recent Attacks" transform="translate(24, 168)">
+    <rect width="364" height="176" rx="24" fill="#131B2E" stroke="#24324F" stroke-width="1.5"/>
+
+    <g id="Pill - Last Episode" transform="translate(20, 20)">
+      <rect width="128" height="26" rx="13" fill="#1E2B48"/>
+      <text x="64" y="17" fill="#818CF8" font-family="Inter, sans-serif" font-size="11" font-weight="600" text-anchor="middle">LAST EPISODE</text>
+    </g>
+
+    <text x="20" y="76" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="24" font-weight="700">15 days ago</text>
+    <text x="20" y="102" fill="#94A3B8" font-family="Inter, sans-serif" font-size="13">4 attacks logged in the past 7 weeks.</text>
+    <text x="20" y="122" fill="#64748B" font-family="Inter, sans-serif" font-size="12">3 of 4 came after a trip · 2 of 4 after a late night</text>
+
+    <!-- Action Row inside card -->
+    <g id="Link - Open History" transform="translate(20, 136)">
+      <text x="0" y="18" fill="#A5B4FC" font-family="Inter, sans-serif" font-size="13" font-weight="600">Open History to see what came before</text>
+      <path d="M248 13.5H258M258 13.5L254 9.5M258 13.5L254 17.5" stroke="#A5B4FC" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <!-- Section: Read for You (Passive Automatic Context) -->
+  <g id="Section - Synced Context" transform="translate(24, 368)">
+    <text x="4" y="18" fill="#E2E8F0" font-family="Inter, sans-serif" font-size="15" font-weight="600">Read for you automatically</text>
+    <text x="4" y="38" fill="#64748B" font-family="Inter, sans-serif" font-size="12">Pre-filled with your permission so you never have to type it</text>
+
+    <!-- Widget 1: Smartwatch Sleep -->
+    <g id="Widget - Smartwatch Sleep" transform="translate(0, 52)">
+      <rect width="176" height="148" rx="22" fill="#131B2E" stroke="#24324F" stroke-width="1.2"/>
+      <rect x="16" y="16" width="36" height="36" rx="12" fill="#1E1B3A"/>
+      <path d="M37.5 38.5C33.36 38.5 30 35.14 30 31C30 28.42 31.3 26.15 33.28 24.8C32.78 27.95 34.92 31 38.12 31.5C38.82 31.6 39.52 31.56 40.2 31.38C39.6 35.42 38.68 38.5 37.5 38.5Z" fill="#A78BFA"/>
+      <text x="62" y="31" fill="#A78BFA" font-family="Inter, sans-serif" font-size="10.5" font-weight="700">SMARTWATCH</text>
+      <text x="62" y="46" fill="#64748B" font-family="Inter, sans-serif" font-size="10.5">Synced 5m ago</text>
+
+      <text x="16" y="86" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="22" font-weight="700">6h 15m</text>
+      <text x="16" y="108" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Last night’s sleep</text>
+      <text x="16" y="128" fill="#64748B" font-family="Inter, sans-serif" font-size="11">Bedtime 00:40 · Restful</text>
+    </g>
+
+    <!-- Widget 2: Local Weather -->
+    <g id="Widget - Weather" transform="translate(188, 52)">
+      <rect width="176" height="148" rx="22" fill="#131B2E" stroke="#24324F" stroke-width="1.2"/>
+      <rect x="16" y="16" width="36" height="36" rx="12" fill="#13283E"/>
+      <path d="M30 38H39.5C41.98 38 44 35.98 44 33.5C44 31.18 42.25 29.28 39.98 29.03C39.28 26.15 36.68 24 33.5 24C29.91 24 27 26.91 27 30.5C27 30.72 27.02 30.93 27.05 31.14C25.32 31.72 24 33.35 24 35.25C24 36.77 25.23 38 26.75 38H30Z" fill="#38BDF8"/>
+      <text x="62" y="31" fill="#38BDF8" font-family="Inter, sans-serif" font-size="10.5" font-weight="700">WEATHER</text>
+      <text x="62" y="46" fill="#64748B" font-family="Inter, sans-serif" font-size="10.5">Online service</text>
+
+      <text x="16" y="86" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="22" font-weight="700">1008 hPa</text>
+      <text x="16" y="108" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Slight pressure drop</text>
+      <text x="16" y="128" fill="#64748B" font-family="Inter, sans-serif" font-size="11">17°C · Overcast sky</text>
+    </g>
+  </g>
+
+  <!-- Gentle Doctor Visit Card (Fixed Width & 2-Line Subtitle + Chevron) -->
+  <g id="Card - Doctor Summary Shortcut" transform="translate(24, 588)">
+    <rect width="364" height="92" rx="20" fill="#111726" stroke="#1E293B" stroke-width="1.2"/>
+    <text x="20" y="30" fill="#E2E8F0" font-family="Inter, sans-serif" font-size="14" font-weight="600">Have a medical appointment soon?</text>
+    <text x="20" y="52" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">Draft a 1-page AI summary from your history</text>
+    <text x="20" y="70" fill="#94A3B8" font-family="Inter, sans-serif" font-size="12">to bring to your doctor or send by email.</text>
+    <rect x="316" y="30" width="32" height="32" rx="10" fill="#172033"/>
+    <path d="M329 46H335M335 46L332 43M335 46L332 49" stroke="#818CF8" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Primary CTA Button: Had an attack? Check in -->
+  <g id="CTA - Check In" transform="translate(24, 704)">
+    <rect width="364" height="62" rx="18" fill="url(#ctaGrad1)"/>
+    <text x="182" y="29" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Had an attack? Check in</text>
+    <text x="182" y="47" fill="#E0E7FF" font-family="Inter, sans-serif" font-size="11.5" font-weight="500" text-anchor="middle">Takes ~1 minute · Tap-only · Optional</text>
+  </g>
+
+  <!-- Modern Bottom Navigation Bar -->
+  <g id="Bottom Navigation" transform="translate(0, 825)">
+    <rect width="412" height="92" fill="#0B0F1A"/>
+    <line x1="0" y1="0" x2="412" y2="0" stroke="#1E293B" stroke-width="1"/>
+
+    <g id="Tab 1 - Today (Active)" transform="translate(24, 14)">
+      <rect x="14" y="0" width="60" height="28" rx="14" fill="#1E2946"/>
+      <circle cx="44" cy="14" r="5" fill="#818CF8"/>
+      <text x="44" y="44" fill="#F8FAFC" font-family="Inter, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Today</text>
+    </g>
+
+    <g id="Tab 2 - Check-in" transform="translate(116, 14)">
+      <path d="M44 8V20M38 14H50" stroke="#64748B" stroke-width="1.8" stroke-linecap="round"/>
+      <text x="44" y="44" fill="#64748B" font-family="Inter, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Check-in</text>
+    </g>
+
+    <g id="Tab 3 - History" transform="translate(208, 14)">
+      <rect x="37" y="8" width="14" height="12" rx="2" stroke="#64748B" stroke-width="1.5"/>
+      <line x1="40" y1="12" x2="48" y2="12" stroke="#64748B" stroke-width="1.3"/>
+      <line x1="40" y1="16" x2="46" y2="16" stroke="#64748B" stroke-width="1.3"/>
+      <text x="44" y="44" fill="#64748B" font-family="Inter, sans-serif" font-size="11" font-weight="500" text-anchor="middle">History</text>
+    </g>
+
+    <g id="Tab 4 - Doctor AI" transform="translate(300, 14)">
+      <path d="M44 7L45.8 12.2L51 14L45.8 15.8L44 21L42.2 15.8L37 14L42.2 12.2L44 7Z" fill="#64748B"/>
+      <text x="44" y="44" fill="#64748B" font-family="Inter, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Doctor AI</text>
+    </g>
+
+    <rect id="Home Indicator" x="138" y="78" width="136" height="5" rx="2.5" fill="#334155"/>
+  </g>
+</svg>
