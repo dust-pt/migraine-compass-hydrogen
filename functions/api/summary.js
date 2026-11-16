@@ -1,4 +1,4 @@
-const GEMINI_MODELS = ["gemini-2.5-flash", "gemini-2.0-flash"];
+const GEMINI_MODELS = ["gemini-3.8-flash", "gemini-2.5-flash"];
 
 function jsonResponse(body, status = 200) {
   return new Response(JSON.stringify(body), {
