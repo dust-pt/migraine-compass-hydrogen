@@ -1385,8 +1385,12 @@
 
     function sendEmailNow() {
       const email = document.getElementById("docEmail").value.trim() || "doctor@hospital.pt";
+      const briefText = document.getElementById("doctorBriefBox").innerText.trim();
+      const subject = encodeURIComponent("Migraine Compass — 1-Page Clinical Brief");
+      const body = encodeURIComponent(briefText);
       closeModal();
-      showToast(`1-page summary sent to ${email}`);
+      showToast(`Opening email app for ${email}...`);
+      window.location.href = `mailto:${encodeURIComponent(email)}?subject=${subject}&body=${body}`;
     }
 
     function openFullscreenModal() {
