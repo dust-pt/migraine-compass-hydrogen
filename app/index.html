@@ -1002,10 +1002,13 @@
 
       <div class="card brief-card" id="doctorBriefCard">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
-          <span class="badge-tag" style="margin-bottom:0;">
-            <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 0L6.4 3.6L10 5L6.4 6.4L5 10L3.6 6.4L0 5L3.6 3.6L5 0Z" fill="#A5B4FC"/></svg>
-            <span>AI CLINICAL BRIEF</span>
-          </span>
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span class="badge-tag" style="margin-bottom:0;">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 0L6.4 3.6L10 5L6.4 6.4L5 10L3.6 6.4L0 5L3.6 3.6L5 0Z" fill="#A5B4FC"/></svg>
+              <span>AI CLINICAL BRIEF</span>
+            </span>
+            <span id="aiBriefSource" style="font-size:10.5px; color:#64748b; font-weight:500;">Local draft</span>
+          </div>
           <button onclick="toggleBriefEdit()" id="tapEditBtn" style="background:none; border:none; color:#818cf8; font-size:12px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:5px; font-family:var(--font-sans);">
             <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1.5 9.5H9.5M7 1.5L9 3.5L3 9.5H1V7.5L7 1.5Z" stroke="#818CF8" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span id="tapEditLbl">Tap to edit</span>
@@ -1260,31 +1263,100 @@
         .join("");
     }
 
-    function buildDoctorSummary() {
-      const rawNote = document.getElementById("noteBox").value.trim() || "Long walk after lunch, noisy office, skipped lunch.";
-      const note = escapeHtml(rawNote);
-      const lastWhen = weeksData[6].active ? "Today" : "15 days ago";
+    let lastAiSignature = "";
+    let aiFetchInFlight = false;
+
+    function renderBriefHtml({ overview, triggers, treatments, patientNote }) {
+      const triggerItems = triggers
+        .map((t) => `<div style="display:flex; align-items:center; gap:8px;"><span style="width:4.5px; height:4.5px; border-radius:50%; background:#818cf8; flex-shrink:0;"></span><span>${escapeHtml(t)}</span></div>`)
+        .join("");
+      const treatmentItems = treatments
+        .map((t) => `<div style="display:flex; align-items:center; gap:8px;"><span style="width:4.5px; height:4.5px; border-radius:50%; background:#34d399; flex-shrink:0;"></span><span>${escapeHtml(t)}</span></div>`)
+        .join("");
+
       document.getElementById("doctorBriefBox").innerHTML = `
         <div style="font-size:15.5px; font-weight:700; color:#f8fafc; margin-bottom:4px;">Past 7 Weeks Overview</div>
         <div style="color:#cbd5e1; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid #24324f;">
-          ${totalAttacks} migraine attacks logged (last episode: ${lastWhen}).
+          ${escapeHtml(overview)}
         </div>
         <div style="font-size:14.5px; font-weight:700; color:#f8fafc; margin-bottom:8px;">Logged before attacks (possibilities)</div>
         <div style="color:#e2e8f0; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid #24324f; line-height:1.7;">
-          <div style="display:flex; align-items:center; gap:8px;"><span style="width:4.5px; height:4.5px; border-radius:50%; background:#818cf8; flex-shrink:0;"></span><span>${counts.trip} of ${totalAttacks} attacks came after a trip (routine change)</span></div>
-          <div style="display:flex; align-items:center; gap:8px;"><span style="width:4.5px; height:4.5px; border-radius:50%; background:#818cf8; flex-shrink:0;"></span><span>${counts.late} of ${totalAttacks} followed a late night (&lt;6h smartwatch sleep)</span></div>
-          <div style="display:flex; align-items:center; gap:8px;"><span style="width:4.5px; height:4.5px; border-radius:50%; background:#818cf8; flex-shrink:0;"></span><span>${counts.stressed} of ${totalAttacks} coincided with stress &amp; pressure drop</span></div>
-          <div style="display:flex; align-items:center; gap:8px;"><span style="width:4.5px; height:4.5px; border-radius:50%; background:#818cf8; flex-shrink:0;"></span><span>Sun exposure logged before ${counts.sun} episodes</span></div>
+          ${triggerItems}
         </div>
         <div style="font-size:14.5px; font-weight:700; color:#f8fafc; margin-bottom:8px;">Medication &amp; what helped</div>
         <div style="color:#e2e8f0; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid #24324f; line-height:1.7;">
-          <div style="display:flex; align-items:center; gap:8px;"><span style="width:4.5px; height:4.5px; border-radius:50%; background:#34d399; flex-shrink:0;"></span><span>Rescue medication taken in ${counts.meds} of ${totalAttacks} attacks</span></div>
-          <div style="display:flex; align-items:center; gap:8px;"><span style="width:4.5px; height:4.5px; border-radius:50%; background:#34d399; flex-shrink:0;"></span><span>Dark quiet room &amp; rest helped in all ${totalAttacks} attacks</span></div>
-          <div style="display:flex; align-items:center; gap:8px;"><span style="width:4.5px; height:4.5px; border-radius:50%; background:#34d399; flex-shrink:0;"></span><span>Coffee reported as helpful when taken early</span></div>
+          ${treatmentItems}
         </div>
         <div style="font-size:14.5px; font-weight:700; color:#f8fafc; margin-bottom:5px;">Patient notes (in their own words)</div>
-        <div style="color:#94a3b8; font-style:italic;">“${note}”</div>
+        <div style="color:#94a3b8; font-style:italic;">“${escapeHtml(patientNote)}”</div>
       `;
+    }
+
+    async function buildDoctorSummary() {
+      const rawNote = document.getElementById("noteBox").value.trim() || "Long walk after lunch, noisy office, skipped lunch.";
+      const lastWhen = weeksData[6].active ? "Today" : "15 days ago";
+      const sourceEl = document.getElementById("aiBriefSource");
+
+      const localSummary = {
+        overview: `${totalAttacks} migraine attacks logged (last episode: ${lastWhen}).`,
+        triggers: [
+          `${counts.trip} of ${totalAttacks} attacks came after a trip (routine change)`,
+          `${counts.late} of ${totalAttacks} followed a late night (<6h smartwatch sleep)`,
+          `${counts.stressed} of ${totalAttacks} coincided with stress & pressure drop`,
+          `Sun exposure logged before ${counts.sun} episodes`
+        ],
+        treatments: [
+          `Rescue medication taken in ${counts.meds} of ${totalAttacks} attacks`,
+          `Dark quiet room & rest helped in all ${totalAttacks} attacks`,
+          `Coffee reported as helpful when taken early`
+        ],
+        patientNote: rawNote
+      };
+
+      if (!isBriefEditing) {
+        renderBriefHtml(localSummary);
+        if (sourceEl) sourceEl.textContent = "Local draft";
+      }
+
+      const selectedChips = Array.from(document.querySelectorAll("#scr-2 .chip-btn.selected"));
+      const selectedTriggers = selectedChips.filter((b) => ["trip", "late", "stressed", "sun"].includes(b.dataset.key)).map((b) => b.textContent.trim());
+      const selectedHelped = selectedChips.filter((b) => ["meds"].includes(b.dataset.key) || !b.dataset.key).map((b) => b.textContent.trim());
+
+      const payload = {
+        totalAttacks,
+        lastWhen,
+        counts,
+        selectedTriggers,
+        selectedHelped,
+        sleep: sleepSamples[sIdx]?.val || "",
+        weather: weatherSamples[wIdx]?.val || "",
+        note: rawNote
+      };
+
+      const sig = JSON.stringify(payload);
+      if (sig === lastAiSignature || aiFetchInFlight || isBriefEditing) return;
+
+      aiFetchInFlight = true;
+      if (sourceEl) sourceEl.textContent = "Drafting with Gemini...";
+
+      try {
+        const res = await fetch("/api/summary", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: sig
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (data?.summary && !isBriefEditing) {
+          renderBriefHtml(data.summary);
+          lastAiSignature = sig;
+          if (sourceEl) sourceEl.textContent = "Gemini AI";
+        }
+      } catch {
+        if (sourceEl && !isBriefEditing) sourceEl.textContent = "Local draft";
+      } finally {
+        aiFetchInFlight = false;
+      }
     }
 
     function toggleBriefEdit() {
