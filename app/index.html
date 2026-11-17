@@ -1572,9 +1572,36 @@
           "Plain look back at logged attacks · No predictions": "Olhar simples sobre crises registadas · Sem previsões",
           "Tap a week bar to see details": "Toque numa semana para ver detalhes",
           "Tap any week bar (7w–1w) to inspect what was logged.": "Toque numa barra semanal (7w–1w) para ver o que foi registado.",
+          "Tap any week bar (`7w`–`1w`) to inspect what was logged.": "Toque numa barra semanal (7w–1w) para ver o que foi registado.",
           "Anything different today? Write it in your own words. Predefined chips cannot cover everything — never required.": "Algo diferente hoje? Escreva por palavras suas. Os chips predefinidos não cobrem tudo — nunca é obrigatório.",
           "Quick-insert examples": "Exemplos rápidos",
+          "Clear text": "Limpar texto",
+          "+ Took pill at first sign": "+ Tomei comprimido ao primeiro sinal",
+          "+ Coffee helped early on": "+ Café ajudou no início",
+          "+ Bright screen all day": "+ Ecrã brilhante todo o dia",
+          "+ Long commute": "+ Deslocação longa",
+          "Weekly overview": "Resumo semanal",
+          "4 attacks logged": "4 crises registadas",
+          "6 attacks logged": "6 crises registadas",
+          "Before these attacks": "Antes destas crises",
+          "What was logged before your last 4 attacks": "O que foi registado antes das últimas 4 crises",
           "What was logged before your last 6 attacks": "O que foi registado antes das últimas 6 crises",
+          "3 of 4": "3 de 4",
+          "2 of 4": "2 de 4",
+          "4 of 6": "4 de 6",
+          "3 of 6": "3 de 6",
+          "Possibilities, not causes": "Possibilidades, não causas",
+          "Simple counts of what was logged — take this to your doctor to discuss patterns together.": "Contagens simples do que foi registado — leve ao seu médico para analisarem padrões em conjunto.",
+          "AI CLINICAL BRIEF": "RESUMO CLÍNICO IA",
+          "4 migraine attacks logged (last episode: 15 days ago).": "4 crises de enxaqueca registadas (último episódio: há 15 dias).",
+          "3 of 4 attacks came after a trip (routine change)": "3 de 4 crises surgiram após uma viagem (mudança de rotina)",
+          "2 of 4 followed a late night (<6h smartwatch sleep)": "2 de 4 seguiram-se a uma noite tardia (<6h de sono)",
+          "2 of 4 coincided with stress & pressure drop": "2 de 4 coincidiram com stress e queda de pressão",
+          "Sun exposure logged before 2 episodes": "Exposição solar registada antes de 2 episódios",
+          "Rescue medication taken in 3 of 4 attacks": "Medicação de resgate tomada em 3 de 4 crises",
+          "Dark quiet room & rest helped in all 4 attacks": "Quarto escuro, silêncio e descanso ajudaram nas 4 crises",
+          "Coffee reported as helpful when taken early": "Café referido como útil quando tomado no início",
+          "Long walk after lunch, noisy office, skipped lunch...": "Caminhada longa após o almoço, escritório barulhento, saltei o almoço...",
           "After a trip": "Após uma viagem",
           "A late night (<6h sleep)": "Noite tardia (<6h sono)",
           "Reports only what was logged · Checked by patient first": "Mostra apenas o que foi registado · Revisto pelo utilizador primeiro",
@@ -1596,9 +1623,9 @@
         const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
         let node;
         while ((node = walker.nextNode())) {
-          const trimmed = node.nodeValue.trim();
+          const trimmed = node.nodeValue.replace(/\s+/g, " ").trim();
           if (trimmed && ptExact[trimmed]) {
-            node.nodeValue = node.nodeValue.replace(trimmed, ptExact[trimmed]);
+            node.nodeValue = ptExact[trimmed];
           }
         }
         const noteBox = document.getElementById("noteBox");
@@ -1608,9 +1635,9 @@
       }
     }
 
-    applySystemLanguage();
     renderHistoryView();
     buildDoctorSummary();
+    applySystemLanguage();
   </script>
 </body>
 </html>
