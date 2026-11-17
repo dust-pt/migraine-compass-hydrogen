@@ -1178,8 +1178,15 @@
     }
 
     function addSampleNote(txt) {
+      const ptSamples = {
+        "Took pill at first sign": "Tomei comprimido ao primeiro sinal",
+        "Coffee helped early on": "Café ajudou no início",
+        "Bright screen all day": "Ecrã brilhante todo o dia",
+        "Long commute": "Deslocação longa"
+      };
+      const localized = currentLang === "pt" && ptSamples[txt] ? ptSamples[txt] : txt;
       const box = document.getElementById("noteBox");
-      box.value = box.value.trim() ? `${box.value.trim()} · ${txt}` : txt;
+      box.value = box.value.trim() ? `${box.value.trim()} · ${localized}` : localized;
     }
 
     function saveNote() {
