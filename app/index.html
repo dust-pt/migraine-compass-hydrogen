@@ -1316,6 +1316,7 @@
       const selectedHelped = selectedChips.filter((b) => ["meds"].includes(b.dataset.key) || !b.dataset.key).map((b) => b.textContent.trim());
 
       const payload = {
+        lang: currentLang,
         totalAttacks,
         lastWhen,
         counts,
@@ -1395,6 +1396,136 @@
       document.getElementById("fullscreenModal").classList.remove("open");
     }
 
+    function detectSystemLang() {
+      const raw = (navigator.languages && navigator.languages[0]) || navigator.language || "en";
+      const code = String(raw).toLowerCase().slice(0, 2);
+      return ["pt", "es", "fr", "en"].includes(code) ? code : "en";
+    }
+
+    const currentLang = detectSystemLang();
+    document.documentElement.lang = currentLang;
+
+    const I18N = {
+      pt: {
+        calm: "Modo calmo · Sem séries",
+        s1Title: "Migraine Compass",
+        s1Sub: "Registo rápido, padrões reais — sem pressão.",
+        s1Cta: "Registar uma crise",
+        s1HistLink: "Ver histórico",
+        s1DocTitle: "Resumo IA para o meu médico",
+        s2Step: "Passo 1/4 · Registo rápido",
+        s2Title: "Como foi?",
+        s2Skip: "Saltar por agora",
+        s2Save: "Guardar registo",
+        s2NoteBtn: "Adicionar algo mais (por palavras suas)",
+        s3Step: "Passo 2/4 · Palavras suas",
+        s3Back: "Voltar ao registo",
+        s3Title: "Por palavras suas",
+        s3Save: "Guardar nota",
+        s4Step: "Passo 3/4 · Padrões",
+        s4Title: "Histórico: últimas 7 semanas",
+        s4Sub: "Olhar simples sobre crises registadas · Sem previsões",
+        s4Cta: "Resumo IA para o meu médico",
+        s5Step: "Passo 4/4 · Resumo médico",
+        s5Title: "Resumo para o meu médico",
+        s5Sub: "Resumo de 1 página por IA · Rever e editar antes de enviar",
+        s5Edit: "Toque para editar",
+        s5Send: "Enviar por email ao médico",
+        s5Full: "Mostrar em ecrã inteiro na consulta",
+        nav: ["Hoje", "Registo", "Histórico", "Médico"]
+      },
+      es: {
+        calm: "Modo calma · Sin rachas",
+        s1Title: "Migraine Compass",
+        s1Sub: "Registro rápido, patrones reales — sin presión.",
+        s1Cta: "Registrar una crisis",
+        s1HistLink: "Ver historial",
+        s1DocTitle: "Resumen IA para mi médico",
+        s2Step: "Paso 1/4 · Registro rápido",
+        s2Title: "¿Cómo fue?",
+        s2Skip: "Omitir por ahora",
+        s2Save: "Guardar registro",
+        s2NoteBtn: "Añadir algo más (con tus palabras)",
+        s3Step: "Paso 2/4 · Tus palabras",
+        s3Back: "Volver al registro",
+        s3Title: "Con tus palabras",
+        s3Save: "Guardar nota",
+        s4Step: "Paso 3/4 · Patrones",
+        s4Title: "Historial: últimas 7 semanas",
+        s4Sub: "Vista clara de crisis registradas · Sin predicciones",
+        s4Cta: "Resumen IA para mi médico",
+        s5Step: "Paso 4/4 · Resumen médico",
+        s5Title: "Resumen para mi médico",
+        s5Sub: "Resumen de 1 página con IA · Revisar y editar antes de enviar",
+        s5Edit: "Toca para editar",
+        s5Send: "Enviar por email al médico",
+        s5Full: "Pantalla completa en la consulta",
+        nav: ["Hoy", "Registro", "Historial", "Médico"]
+      },
+      fr: {
+        calm: "Mode calme · Sans séries",
+        s1Title: "Migraine Compass",
+        s1Sub: "Suivi rapide, vrais schémas — sans pression.",
+        s1Cta: "Enregistrer une crise",
+        s1HistLink: "Voir l'historique",
+        s1DocTitle: "Résumé IA pour mon médecin",
+        s2Step: "Étape 1/4 · Suivi rapide",
+        s2Title: "Comment était-ce ?",
+        s2Skip: "Passer pour l'instant",
+        s2Save: "Enregistrer",
+        s2NoteBtn: "Ajouter autre chose (avec vos mots)",
+        s3Step: "Étape 2/4 · Vos mots",
+        s3Back: "Retour au suivi",
+        s3Title: "Avec vos mots",
+        s3Save: "Enregistrer la note",
+        s4Step: "Étape 3/4 · Tendances",
+        s4Title: "Historique : 7 dernières semaines",
+        s4Sub: "Vue simple des crises enregistrées · Sans prédictions",
+        s4Cta: "Résumé IA pour mon médecin",
+        s5Step: "Étape 4/4 · Bilan médecin",
+        s5Title: "Résumé pour mon médecin",
+        s5Sub: "Bilan d'une page par IA · Relire et modifier avant envoi",
+        s5Edit: "Toucher pour modifier",
+        s5Send: "Envoyer par email au médecin",
+        s5Full: "Plein écran en consultation",
+        nav: ["Aujourd'hui", "Suivi", "Historique", "Médecin"]
+      }
+    };
+
+    function applySystemLanguage() {
+      const tr = I18N[currentLang];
+      if (!tr) return;
+      const setText = (sel, txt) => {
+        const el = document.querySelector(sel);
+        if (el && txt) el.textContent = txt;
+      };
+      setText(".calm-pill span:last-child", tr.calm);
+      setText("#scr-1 .h1-title", tr.s1Title);
+      setText("#scr-1 .subtitle", tr.s1Sub);
+      setText("#scr-1 .btn-cta", tr.s1Cta);
+      setText("#scr-2 .step-label", tr.s2Step);
+      setText("#scr-2 .h1-title", tr.s2Title);
+      setText("#noteBtnLabel", tr.s2NoteBtn);
+      setText("#scr-2 .btn-cta", tr.s2Save);
+      setText("#scr-3 .step-label", tr.s3Step);
+      setText("#scr-3 .h1-title", tr.s3Title);
+      setText("#scr-3 .btn-cta", tr.s3Save);
+      setText("#scr-4 .step-label", tr.s4Step);
+      setText("#scr-4 .h1-title", tr.s4Title);
+      setText("#scr-4 .subtitle", tr.s4Sub);
+      setText("#scr-4 .btn-cta span", tr.s4Cta);
+      setText("#scr-5 .step-label", tr.s5Step);
+      setText("#scr-5 .h1-title", tr.s5Title);
+      setText("#scr-5 .subtitle", tr.s5Sub);
+      setText("#tapEditLbl", tr.s5Edit);
+      setText("#scr-5 .btn-cta span", tr.s5Send);
+      setText("#scr-5 .btn-ghost", tr.s5Full);
+      document.querySelectorAll(".nav-item span").forEach((el, idx) => {
+        if (tr.nav[idx]) el.textContent = tr.nav[idx];
+      });
+    }
+
+    applySystemLanguage();
     renderHistoryView();
     buildDoctorSummary();
   </script>

@@ -10,12 +10,20 @@ function jsonResponse(body, status = 200) {
   });
 }
 
-function buildPrompt(data) {
+const LANG_NAMES = {
+  pt: "Portuguese",
+  es: "Spanish",
+  fr: "French",
+  en: "English"
+};
+
+function buildPrompt(data, lang = "en") {
+  const targetLang = LANG_NAMES[lang] || "English";
   return [
     "You are drafting a concise, neutral 1-page clinical brief for a patient to share with their neurologist or doctor.",
     "Rules:",
     "- Report ONLY what is in the logged data below. Do NOT invent triggers, medications, dates, or medical diagnoses.",
-    "- Keep each bullet short (max 12 words), plain English, factual, and non-alarmist.",
+    `- Write all output values in ${targetLang}. Keep each bullet short (max 12 words), plain ${targetLang}, factual, and non-alarmist.`,
     "- Return valid JSON with exact keys: overview (string), triggers (array of 3-4 strings), treatments (array of 2-3 strings), patientNote (string).",
     "",
     "Logged patient data (past 7 weeks):",
@@ -41,6 +49,7 @@ export async function onRequestPost(context) {
     return jsonResponse({ error: "Invalid JSON request body." }, 400);
   }
 
+  const lang = typeof payload.lang === "string" ? payload.lang.slice(0, 2).toLowerCase() : "en";
   const prompt = buildPrompt({
     totalAttacks: Number(payload.totalAttacks) || 6,
     lastEpisode: String(payload.lastWhen || "15 days ago"),
