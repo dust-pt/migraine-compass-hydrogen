@@ -1523,6 +1523,67 @@
       document.querySelectorAll(".nav-item span").forEach((el, idx) => {
         if (tr.nav[idx]) el.textContent = tr.nav[idx];
       });
+
+      if (currentLang === "pt") {
+        const ptExact = {
+          "Optional": "Opcional",
+          "Skip for now": "Saltar por agora",
+          "Back to check-in": "Voltar ao registo",
+          "Recent attacks": "Crises recentes",
+          "View history": "Ver histórico",
+          "6 attacks logged in the past 7 weeks.": "6 crises registadas nas últimas 7 semanas.",
+          "4 of 6 came after a trip · 3 of 6 after a late night": "4 de 6 após uma viagem · 3 de 6 após noite tardia",
+          "Last logged:": "Último registo:",
+          "15 days ago": "Há 15 dias",
+          "Today (just logged)": "Hoje (registado agora)",
+          "Draft a 1-page AI summary from your history to bring to your doctor or send by email.": "Crie um resumo de 1 página por IA com o seu histórico para levar ao médico ou enviar por email.",
+          "What happened before?": "O que aconteceu antes?",
+          "Trip": "Viagem",
+          "Late night": "Noite tardia",
+          "Stressed": "Stress",
+          "Sun": "Sol",
+          "What helped?": "O que ajudou?",
+          "Meds": "Medicação",
+          "Dark room": "Quarto escuro",
+          "Coffee": "Café",
+          "Rest": "Descanso",
+          "Menstruation": "Menstruação",
+          "Show menstruation option": "Mostrar opção menstruação",
+          "Included when AI drafts your doctor summary": "Incluído quando a IA cria o resumo médico",
+          "Plain look back at logged attacks · No predictions": "Olhar simples sobre crises registadas · Sem previsões",
+          "Tap a week bar to see details": "Toque numa semana para ver detalhes",
+          "What was logged before your last 6 attacks": "O que foi registado antes das últimas 6 crises",
+          "After a trip": "Após uma viagem",
+          "A late night (<6h sleep)": "Noite tardia (<6h sono)",
+          "Reports only what was logged · Checked by patient first": "Mostra apenas o que foi registado · Revisto pelo utilizador primeiro",
+          "Local draft": "Rascunho local",
+          "Gemini AI": "IA Gemini",
+          "Send 1-page summary to doctor": "Enviar resumo de 1 página ao médico",
+          "Sent only when you choose. Includes your reviewed text.": "Enviado apenas quando escolher. Inclui o texto revisto.",
+          "Send email": "Enviar email",
+          "Cancel": "Cancelar",
+          "Close": "Fechar",
+          "APPOINTMENT VIEW": "VISTA DE CONSULTA",
+          "Patient-reviewed": "Revisto pelo paciente",
+          "Past 7 Weeks Overview": "Resumo das últimas 7 semanas",
+          "Logged before attacks (possibilities)": "Registado antes das crises (possibilidades)",
+          "Medication & what helped": "Medicação e o que ajudou",
+          "Patient notes (in their own words)": "Notas do paciente (por palavras suas)"
+        };
+
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        let node;
+        while ((node = walker.nextNode())) {
+          const trimmed = node.nodeValue.trim();
+          if (trimmed && ptExact[trimmed]) {
+            node.nodeValue = node.nodeValue.replace(trimmed, ptExact[trimmed]);
+          }
+        }
+        const noteBox = document.getElementById("noteBox");
+        if (noteBox) {
+          noteBox.placeholder = "Ex.: Caminhada longa depois do almoço, escritório barulhento, saltei o almoço...";
+        }
+      }
     }
 
     applySystemLanguage();
