@@ -1274,20 +1274,21 @@
         .map((t) => `<div style="display:flex; align-items:center; gap:8px;"><span style="width:4.5px; height:4.5px; border-radius:50%; background:#34d399; flex-shrink:0;"></span><span>${escapeHtml(t)}</span></div>`)
         .join("");
 
+      const isPt = currentLang === "pt";
       document.getElementById("doctorBriefBox").innerHTML = `
-        <div style="font-size:15.5px; font-weight:700; color:#f8fafc; margin-bottom:4px;">Past 7 Weeks Overview</div>
+        <div style="font-size:15.5px; font-weight:700; color:#f8fafc; margin-bottom:4px;">${isPt ? "Resumo das últimas 7 semanas" : "Past 7 Weeks Overview"}</div>
         <div style="color:#cbd5e1; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid #24324f;">
           ${escapeHtml(overview)}
         </div>
-        <div style="font-size:14.5px; font-weight:700; color:#f8fafc; margin-bottom:8px;">Logged before attacks (possibilities)</div>
+        <div style="font-size:14.5px; font-weight:700; color:#f8fafc; margin-bottom:8px;">${isPt ? "Registado antes das crises (possibilidades)" : "Logged before attacks (possibilities)"}</div>
         <div style="color:#e2e8f0; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid #24324f; line-height:1.7;">
           ${triggerItems}
         </div>
-        <div style="font-size:14.5px; font-weight:700; color:#f8fafc; margin-bottom:8px;">Medication &amp; what helped</div>
+        <div style="font-size:14.5px; font-weight:700; color:#f8fafc; margin-bottom:8px;">${isPt ? "Medicação e o que ajudou" : "Medication &amp; what helped"}</div>
         <div style="color:#e2e8f0; margin-bottom:14px; padding-bottom:12px; border-bottom:1px solid #24324f; line-height:1.7;">
           ${treatmentItems}
         </div>
-        <div style="font-size:14.5px; font-weight:700; color:#f8fafc; margin-bottom:5px;">Patient notes (in their own words)</div>
+        <div style="font-size:14.5px; font-weight:700; color:#f8fafc; margin-bottom:5px;">${isPt ? "Notas do paciente (por palavras suas)" : "Patient notes (in their own words)"}</div>
         <div style="color:#94a3b8; font-style:italic;">“${escapeHtml(patientNote)}”</div>
       `;
     }
@@ -1297,21 +1298,39 @@
       const lastWhen = weeksData[6].active ? "Today" : "15 days ago";
       const sourceEl = document.getElementById("aiBriefSource");
 
-      const localSummary = {
-        overview: `${totalAttacks} migraine attacks logged (last episode: ${lastWhen}).`,
-        triggers: [
-          `${counts.trip} of ${totalAttacks} attacks came after a trip (routine change)`,
-          `${counts.late} of ${totalAttacks} followed a late night (<6h smartwatch sleep)`,
-          `${counts.stressed} of ${totalAttacks} coincided with stress & pressure drop`,
-          `Sun exposure logged before ${counts.sun} episodes`
-        ],
-        treatments: [
-          `Rescue medication taken in ${counts.meds} of ${totalAttacks} attacks`,
-          `Dark quiet room & rest helped in all ${totalAttacks} attacks`,
-          `Coffee reported as helpful when taken early`
-        ],
-        patientNote: rawNote
-      };
+      const isPt = currentLang === "pt";
+      const lastWhenPt = weeksData[6].active ? "Hoje" : "há 15 dias";
+      const localSummary = isPt
+        ? {
+            overview: `${totalAttacks} crises de enxaqueca registadas (último episódio: ${lastWhenPt}).`,
+            triggers: [
+              `${counts.trip} de ${totalAttacks} crises surgiram após uma viagem (mudança de rotina)`,
+              `${counts.late} de ${totalAttacks} seguiram-se a uma noite tardia (<6h de sono)`,
+              `${counts.stressed} de ${totalAttacks} coincidiram com stress e queda de pressão`,
+              `Exposição solar registada antes de ${counts.sun} episódios`
+            ],
+            treatments: [
+              `Medicação de resgate tomada em ${counts.meds} de ${totalAttacks} crises`,
+              `Quarto escuro, silêncio e descanso ajudaram nas ${totalAttacks} crises`,
+              `Café referido como útil quando tomado no início`
+            ],
+            patientNote: rawNote
+          }
+        : {
+            overview: `${totalAttacks} migraine attacks logged (last episode: ${lastWhen}).`,
+            triggers: [
+              `${counts.trip} of ${totalAttacks} attacks came after a trip (routine change)`,
+              `${counts.late} of ${totalAttacks} followed a late night (<6h smartwatch sleep)`,
+              `${counts.stressed} of ${totalAttacks} coincided with stress & pressure drop`,
+              `Sun exposure logged before ${counts.sun} episodes`
+            ],
+            treatments: [
+              `Rescue medication taken in ${counts.meds} of ${totalAttacks} attacks`,
+              `Dark quiet room & rest helped in all ${totalAttacks} attacks`,
+              `Coffee reported as helpful when taken early`
+            ],
+            patientNote: rawNote
+          };
 
       if (!isBriefEditing) {
         renderBriefHtml(localSummary);
@@ -1620,6 +1639,7 @@
           "Send email": "Enviar email",
           "Cancel": "Cancelar",
           "Close": "Fechar",
+          "Close fullscreen": "Fechar ecrã inteiro",
           "APPOINTMENT VIEW": "VISTA DE CONSULTA",
           "Patient-reviewed": "Revisto pelo paciente",
           "Past 7 Weeks Overview": "Resumo das últimas 7 semanas",
